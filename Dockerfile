@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER Gavin Brooks <gavin@brks.io>
+MAINTAINER Oscar Carlsson <oscar.carlsson@gmail.com>
 
 ENV VERSION v1.3.17
 
@@ -9,6 +9,7 @@ ENV BEETSDIR /config
 RUN adduser -D -u 1000 beets users
 
 RUN apk add --update python py-pip && \
+    apk add --update faac faad2 ffmpeg flac lame libvorbis opus && \
     pip install -U pip && \
     pip install -U beets requests pylast
 
@@ -19,7 +20,7 @@ ADD src/config.yaml /home/beets/config.yaml
 
 USER beets
 
-VOLUME ["/config", "/music", "/working"]
+VOLUME ["/config", "/music", "/working", "/convert"]
 
 WORKDIR /working
 
