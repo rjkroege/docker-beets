@@ -1,4 +1,4 @@
-plugins: fetchart embedart scrub lastgenre missing
+plugins: fetchart embedart scrub lastgenre missing convert
 directory: /music/
 library: /config/musiclibrary.blb
 art_filename: cover
@@ -14,7 +14,6 @@ paths:
     singleton: Individual\ Tracks/$artist - $title
     albumtype:soundtrack: Soundtracks/$album%aunique{}/$track - $artist - $title
     comp: Compilations/$album%aunique{}/$track - $artist - $title
-    
 
 asciify_paths: yes
 
@@ -55,3 +54,9 @@ replace:
     '[<>:"\?\*\|]': _
     '\.$': _
     '\s+$': ''
+
+convert:
+  dest: /convert
+  quiet: yes
+  never_convert_lossy_files: yes
+
